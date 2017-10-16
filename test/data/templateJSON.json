@@ -1,0 +1,40 @@
+{
+  "elements": [
+    {
+      "tag": "div",
+      "attr": {
+        "class": "attr-class",
+        "style": {
+          "height": "100px",
+          "line-height": "40px",
+          "position": "fixed",
+          "top": "20px",
+          "left": "10px",
+          "border": "1px solid #000000"
+        }
+      },
+      "className": ["some-class", "other-class"],
+      "innerHTML": "内容内容内容内容",
+      "name": "testDIV"
+    },
+    {
+      "tag": "div",
+      "attr": {
+        "class": "attr-class",
+        "style": {
+          "height": "50px",
+          "line-height": "40px",
+          "position": "fixed",
+          "top": "10px",
+          "left": "30px",
+          "border": "1px solid #000000"
+        }
+      },
+      "className": ["some-class", "other-class"],
+      "innerHTML": "内容内容内容内容",
+      "name": "testDIV"
+    }
+  ],
+  "width": 200,
+  "height": 200
+}

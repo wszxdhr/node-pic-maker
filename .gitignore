@@ -1,0 +1,5 @@
+node_modules
+.idea
+.DS_Store
+sqlConfig.json
+modules/sql/config.js
