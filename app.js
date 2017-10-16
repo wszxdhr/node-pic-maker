@@ -9,6 +9,8 @@ const logger = require('koa-logger');
 const index = require('./routes/index');
 const users = require('./routes/users');
 
+require('./modules/sql/sequelize.js');
+
 // error handler
 onerror(app);
 
