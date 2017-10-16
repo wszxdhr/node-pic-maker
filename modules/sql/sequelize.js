@@ -1,6 +1,16 @@
 const Sequelize = require('sequelize')
 const config = require('./config.js')
-let sequelize = new Sequelize('mysql://root:Wszxdhr98090098@anymelon.com:3306/picture')
+let sequelize = new Sequelize('picture', config.username, config.password, {
+  host: config.host,
+  dialect: 'mysql',
+
+  pool: {
+    max: 5,
+    min: 0,
+    idle: 10000
+  }
+
+})
 
 sequelize
   .authenticate()
