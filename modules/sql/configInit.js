@@ -2,6 +2,7 @@
 module.exports = {
   host: 'http://example.com',
   port: '3306',
+  database: 'database',
   username: 'root',
   password: 'rootpassword'
 }
