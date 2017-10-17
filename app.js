@@ -7,6 +7,7 @@ const bodyparser = require('koa-bodyparser')();
 const logger = require('koa-logger');
 
 const index = require('./routes/index');
+const storage = require('./routes/storage');
 const users = require('./routes/users');
 
 require('./modules/sql/sequelize.js');
@@ -34,6 +35,7 @@ app.use(async (ctx, next) => {
 
 // routes
 app.use(index.routes(), index.allowedMethods());
+app.use(storage.routes(), storage.allowedMethods());
 app.use(users.routes(), users.allowedMethods());
 
 module.exports = app;

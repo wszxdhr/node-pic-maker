@@ -1,7 +1,8 @@
 const router = require('koa-router')()
+const translater = require('../modules/render/query2template')
 
 router.get('/', async (ctx, next) => {
-  const elements = require('../test/data/templateJSON.json').elements
+  const elements = (await translater(ctx.query)).elements
   await ctx.render('index', {elements})
 })
 
