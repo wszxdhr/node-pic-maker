@@ -7,3 +7,12 @@ A project to make pictures.
 # npm install
 # change name of file 'modules/sql/config.js' to 'config.js'
 # npm run dev
+```
+
+## response
+```
+{
+  status: 0,    // 0: success, 1: failed
+  data: []
+}
+```
