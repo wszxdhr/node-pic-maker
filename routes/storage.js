@@ -1,8 +1,22 @@
 const router = require('koa-router')()
 let template = require('../modules/sql/models/template')
+const errors = require('../config/errors')
 
 router.post('/template/add', async (ctx, next) => {
-  template
+  await template
+    .findOne({
+      name: ctx.request.body.name
+    })
+    .then(res => {
+      // 成功找到，因为是添加操作，所以返回失败
+      ctx.body = {
+        status: 1,
+        error: errors[400100]
+      }
+    }, err => {
+      console.log('not found')
+    })
+  await template
     .build({
       name: ctx.request.body.name,
       template: JSON.stringify(ctx.request.body.template),
@@ -10,11 +24,10 @@ router.post('/template/add', async (ctx, next) => {
     })
     .save()
     .then((another) => {
-      console.log(another)
+      ctx.body = {status: 0, message: '模板添加成功！', data: another}
     }, (err) => {
-      console.error(err)
+      ctx.body = {status: 1}
     })
-  ctx.body = ctx.request.body
 })
 
 router.put('/template/edit/:name', async (ctx, next) => {
@@ -29,7 +42,12 @@ router.put('/template/edit/:name', async (ctx, next) => {
     .update(body, {where: {name: ctx.params.name}})
     .then(res => {
       if (res) {
-        ctx.body = 'success'
+        ctx.body = {status: 0, message: '模板修改成功！', data: another}
+      }
+    }, err => {
+      ctx.body = {
+        status: 1,
+        error: errors[400100]
       }
     })
 })
