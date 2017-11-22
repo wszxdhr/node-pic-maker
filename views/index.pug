@@ -6,5 +6,7 @@ block content
       class=element.className
       class=element.attr.class
       src=element.attr.src
-      style=element.attr.style).
-        #{element.innerHTML}
+      style=element.attr.style)
+        != element.innerHTML
+
+
