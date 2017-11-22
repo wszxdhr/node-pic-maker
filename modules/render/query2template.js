@@ -1,8 +1,9 @@
 let jiade = require('../../test/data/templateJSON.json').elements
-const sequelize = require('../sql/models/template')
+const sqlTable = require('../sql/models/template')
 
 module.exports = async function (query) {
-  return JSON.parse(await sequelize
+  await sqlTable.sync()
+  return JSON.parse(await sqlTable
     // 根据模板名称找到模板
     .find({
       where: {
