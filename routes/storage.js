@@ -23,8 +23,8 @@ router.post('/template/add', async (ctx, next) => {
       arguments: JSON.stringify(ctx.request.body.arguments)
     })
     .save()
-    .then((another) => {
-      ctx.body = {status: 0, message: '模板添加成功！', data: another}
+    .then((res) => {
+      ctx.body = {status: 0, message: '模板添加成功！', data: res}
     }, (err) => {
       ctx.body = {status: 1}
     })
@@ -42,7 +42,7 @@ router.put('/template/edit/:name', async (ctx, next) => {
     .update(body, {where: {name: ctx.params.name}})
     .then(res => {
       if (res) {
-        ctx.body = {status: 0, message: '模板修改成功！', data: another}
+        ctx.body = {status: 0, message: '模板修改成功！', data: res}
       }
     }, err => {
       ctx.body = {
