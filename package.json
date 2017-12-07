@@ -7,7 +7,7 @@
     "dev": "./node_modules/.bin/nodemon bin/www",
     "prd": "pm2 start bin/www",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "publish": ""
+    "publish": "pm2 deploy pm2.json production"
   },
   "dependencies": {
     "debug": "^2.6.3",
