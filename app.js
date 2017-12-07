@@ -7,6 +7,7 @@ const bodyparser = require('koa-bodyparser')();
 const logger = require('koa-logger');
 
 const index = require('./routes/index');
+const getTemplate = require('./routes/getTemplate');
 const storage = require('./routes/storage');
 const users = require('./routes/users');
 
@@ -35,6 +36,7 @@ app.use(async (ctx, next) => {
 
 // routes
 app.use(index.routes(), index.allowedMethods());
+app.use(getTemplate.routes(), getTemplate.allowedMethods());
 app.use(storage.routes(), storage.allowedMethods());
 app.use(users.routes(), users.allowedMethods());
 

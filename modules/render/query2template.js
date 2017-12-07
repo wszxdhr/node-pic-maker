@@ -23,8 +23,6 @@ module.exports = async function (query) {
           .match(/[\|][^}]*\}$/) || [''])[0]
           .slice(1, -1)
           .trim()
-        console.log('default')
-        console.log(query[arg])
         let insertStr = query[arg] !== undefined ? query[arg] : defaultValue
         template = template.replace(matchReg, insertStr)
       }

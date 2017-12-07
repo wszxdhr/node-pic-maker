@@ -1,0 +1,22 @@
+{
+  "apps" : [{
+    "name" : "node-pic-maker",
+    "script" : "bin/www",
+    "env": {
+      "COMMON_VARIABLE": "true"
+    },
+    "env_production" : {
+      "NODE_ENV": "production"
+    }
+  }],
+  "deploy" : {
+    "production" : {
+      "user" : "root",
+      "host" : "anymelon.com",
+      "ref"  : "origin/master", //需要部署的分支
+      "repo" : "https://github.com/wszxdhr/node-pic-maker.git",
+      "path" : "/data/wwwroot/node-pic-maker", //web目录
+      "post-deploy" : "npm install && pm2 start pm2.json --env production"
+    }
+  }
+}
