@@ -2,6 +2,36 @@ const router = require('koa-router')()
 let template = require('../modules/sql/models/template')
 const errors = require('../config/errors')
 
+router.get('/template/:name', async (ctx, next) => {
+  await template
+    .findOne({where: {name: ctx.params.name}})
+    .then(res => {
+      // 成功找到，因为是添加操作，所以返回失败
+      if (res) {
+        ctx.body = {
+          data: {
+            template: res.template,
+            arguments: res.arguments,
+            name: res.name
+          },
+          status: 0,
+          error: 0
+        }
+      } else {
+        ctx.body = {
+          status: 1,
+          error: errors[404100]
+        }
+      }
+    }, err => {
+      ctx.body = {
+        status: 1,
+        error: errors[404100]
+      }
+      console.log('not found')
+    })
+})
+
 router.post('/template/add', async (ctx, next) => {
   await template
     .findOne({
